@@ -4,13 +4,17 @@ const { v4: uuidv4 } = require('uuid');
 
 const getAll = () => {
     try {
-        const jsonProductsData = fs.readFileSync("./data/products.json");
-        const res = JSON.parse(jsonProductsData);
-        return res;
+        return getAllProductsFromFile();
     } catch (err) {
         console.log(err);
         return { code: 500, message: "Error while getting all products data." };
     }
+}
+
+
+const getAllProductsFromFile = () => {
+    const jsonProductsData = fs.readFileSync("./data/products.json");
+    return JSON.parse(jsonProductsData);
 }
 
 const addNew = (req) => {
@@ -24,8 +28,7 @@ const addNew = (req) => {
         "updated_at": new Date().toLocaleString()
     };
 
-    const jsonProductsData = fs.readFileSync("./data/products.json");
-    var tempNewProductsList = JSON.parse(jsonProductsData);
+    var tempNewProductsList = getAllProductsFromFile();
 
     tempNewProductsList ?
         tempNewProductsList.push(newProduct) :
@@ -49,8 +52,7 @@ const addNew = (req) => {
 }
 
 const edit = (req) => {
-    const jsonProductsData = fs.readFileSync("./data/products.json");
-    const result = JSON.parse(jsonProductsData).map(product => {
+    const result = getAllProductsFromFile().map(product => {
         if (product.token === req.params.token) {
             return {
                 ...product,
@@ -82,8 +84,7 @@ const edit = (req) => {
 }
 
 const deleteProduct = (req) => {
-    const jsonProductsData = fs.readFileSync("./data/products.json");
-    const result = JSON.parse(jsonProductsData).filter(
+    const result = getAllProductsFromFile().filter(
         function (product) { return product.token != req.params.token }
     );
 

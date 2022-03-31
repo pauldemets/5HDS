@@ -1,18 +1,18 @@
 [
     {
-        "firstname": "test",
-        "lastname": "new",
+        "firstname": "Jack",
+        "lastname": "Lock",
         "token": "f676b55a-fdbb-2099-a17b-1f6f9020c1c0",
-        "role": "user",
+        "role": "Boss",
         "created_at": "31/03/2022, 10:08:11",
-        "updated_at": "31/03/2022, 10:08:11"
+        "updated_at": "31/03/2022, 11:48:01"
     },
     {
-        "firstname": "EDITED3",
-        "lastname": "new",
-        "token": "f676b55a-fdbb-2788-a17b-1f6f9020c1c0",
-        "role": "user",
-        "created_at": "31/03/2022, 10:08:11",
-        "updated_at": "31/03/2022, 10:53:43"
+        "firstname": "Guillaume",
+        "lastname": "Apo",
+        "token": "0002b541-8f41-40a6-9771-59a4ea4a4b0c",
+        "role": "CEO",
+        "created_at": "31/03/2022, 11:44:50",
+        "updated_at": "31/03/2022, 11:44:50"
     }
 ]

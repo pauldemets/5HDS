@@ -24,7 +24,8 @@ const addNew = (req) => {
         "updated_at": new Date().toLocaleString()
     };
 
-    var tempNewProductsList = ProductsData;
+    const jsonProductsData = fs.readFileSync("./data/products.json");
+    var tempNewProductsList = JSON.parse(jsonProductsData);
 
     tempNewProductsList ?
         tempNewProductsList.push(newProduct) :
@@ -48,7 +49,8 @@ const addNew = (req) => {
 }
 
 const edit = (req) => {
-    const result = ProductsData.map(product => {
+    const jsonProductsData = fs.readFileSync("./data/products.json");
+    const result = JSON.parse(jsonProductsData).map(product => {
         if (product.token === req.params.token) {
             return {
                 ...product,
@@ -80,7 +82,8 @@ const edit = (req) => {
 }
 
 const deleteProduct = (req) => {
-    const result = ProductsData.filter(
+    const jsonProductsData = fs.readFileSync("./data/products.json");
+    const result = JSON.parse(jsonProductsData).filter(
         function (product) { return product.token != req.params.token }
     );
 

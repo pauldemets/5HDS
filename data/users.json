@@ -1,18 +1,1 @@
-[
-    {
-        "firstname": "Julien",
-        "lastname": "Bert",
-        "token": "687ZD89Z96DZ879",
-        "role": "Admin",
-        "created_at": "12/02/2022",
-        "updated_at": "19/02/2022"
-    },
-    {
-        "firstname": "Stephanie",
-        "lastname": "Locke",
-        "token": "867DZ687ZD678Z6D",
-        "role": "Management",
-        "created_at": "20/03/2022",
-        "updated_at": "21/03/2022"
-    }
-]
+[{"firstname":"Jack","lastname":"Shepphard","token":"DZ8Z89D79Z8D79","role":"CEO","created_at":"02/03/2022","updated_at":"11/03/2022"},{"firstname":"Jack","lastname":"Shepphard","token":"DZ8Z89D79Z8D79","role":"CEO","created_at":"02/03/2022","updated_at":"11/03/2022"},{"firstname":"Jack","lastname":"Shepphard","token":"DZ8Z89D79Z8D79","role":"CEO","created_at":"02/03/2022","updated_at":"11/03/2022"},{"firstname":"test","lastname":"new","token":"f676b55a-fdbb-4072-a17b-1f6f9020c1c0","role":"user","created_at":"31/03/2022, 10:08:11","updated_at":"31/03/2022, 10:08:11"}]

@@ -56,6 +56,12 @@ app.delete('/product/:token', (req, res) => {
     )
 })
 
+app.post('/product/edit/:token', (req, res) => {
+    res.send(
+        ProductService.edit(req)
+    )
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })

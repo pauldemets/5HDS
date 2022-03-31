@@ -47,8 +47,36 @@ const addNew = (req) => {
     }
 }
 
-const edit = () => {
-    return null;
+const edit = (req) => {
+    const result = ProductsData.map(product => {
+        if (product.token === req.params.token) {
+            return {
+                ...product,
+                "name": req.body.name ?? product.name,
+                "description": req.body.description ?? product.description,
+                "price": req.body.price ?? product.price,
+                "stock": req.body.stock ?? product.stock,
+                "updated_at": new Date().toLocaleString()
+            };
+        }
+        return product;
+    });
+
+    try {
+        fs.writeFile('./data/products.json', JSON.stringify(result), err => {
+            if (err) {
+                console.log('Error while editing file', err)
+            } else {
+                console.log('Successfully edited')
+            }
+        });
+
+        return { code: 200, message: "Product successfully edited" }
+    }
+    catch (error) {
+        console.log(error);
+        return { code: 500, message: "Error while editing product" }
+    }
 }
 
 const deleteProduct = (req) => {
@@ -74,4 +102,4 @@ const deleteProduct = (req) => {
 }
 
 
-module.exports = { getAll, addNew, deleteProduct };
+module.exports = { getAll, addNew, deleteProduct, edit };

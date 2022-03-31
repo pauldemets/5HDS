@@ -73,7 +73,7 @@ const edit = (req) => {
     }
     catch (error) {
         console.log(error);
-        return { code: 500, message: "Error while removing user" }
+        return { code: 500, message: "Error while editing user" }
     }
 }
 

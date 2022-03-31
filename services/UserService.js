@@ -3,7 +3,14 @@ const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
 function getAll() {
-    return UsersData;
+    try {
+        const jsonUsersData = fs.readFileSync("./data/users.json");
+        const res = JSON.parse(jsonUsersData);
+        return res;
+    } catch (err) {
+        console.log(err);
+        return { code: 500, message: "Error while reading file data." };
+    }
 }
 
 function addNew(req, res) {
@@ -39,13 +46,58 @@ function addNew(req, res) {
     }
 }
 
-function edit() {
-    return null;
+const edit = (req) => {
+    const result = UsersData.map(user => {
+        if (user.token === req.params.token) {
+            return {
+                ...user,
+                "firstname": req.body.firstname ?? user.firstname,
+                "lastname": req.body.lastname ?? user.lastname,
+                "role": req.body.role ?? user.role,
+                "updated_at": new Date().toLocaleString()
+            };
+        }
+        return user;
+    });
+
+    try {
+        fs.writeFile('./data/users.json', JSON.stringify(result), err => {
+            if (err) {
+                console.log('Error editing file', err)
+            } else {
+                console.log('Successfully edited')
+            }
+        });
+
+        return { code: 200, message: "User successfully edited" }
+    }
+    catch (error) {
+        console.log(error);
+        return { code: 500, message: "Error while removing user" }
+    }
 }
 
-function deleteUser() {
-    return null;
+function deleteUser(req, res) {
+    const result = UsersData.filter(
+        function (user) { return user.token != req.params.token }
+    );
+
+    try {
+        fs.writeFile('./data/users.json', JSON.stringify(result), err => {
+            if (err) {
+                console.log('Error writing file', err)
+            } else {
+                console.log('Successfully wrote file')
+            }
+        });
+
+        return { code: 200, message: "User successfully removed" }
+    }
+    catch (error) {
+        console.log(error);
+        return { code: 500, message: "Error while removing user" }
+    }
 }
 
 
-module.exports = { getAll, addNew };
+module.exports = { getAll, addNew, deleteUser, edit };

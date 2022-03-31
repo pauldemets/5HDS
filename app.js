@@ -25,13 +25,23 @@ app.post('/user/new', (req, res) => {
     )
 })
 
+app.post('/user/edit/:token', (req, res) => {
+    res.send(
+        UserService.edit(req)
+    )
+})
+
+app.delete('/user/:token', (req, res) => {
+    res.send(
+        UserService.deleteUser(req)
+    )
+})
+
 app.get('/products', (req, res) => {
     res.send(
         ProductService.getAll()
     )
 })
-
-
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

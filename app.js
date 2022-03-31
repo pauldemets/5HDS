@@ -43,6 +43,19 @@ app.get('/products', (req, res) => {
     )
 })
 
+
+app.post('/product/new', (req, res) => {
+    res.send(
+        ProductService.addNew(req)
+    )
+})
+
+app.delete('/product/:token', (req, res) => {
+    res.send(
+        ProductService.deleteProduct(req)
+    )
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })

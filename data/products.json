@@ -1,9 +1,29 @@
-{
-    "name": "salut",
-    "description": "This is a desc",
-    "token": "687ZD89Z96DZ879",
-    "price": 44,
-    "stock": 10,
-    "created_at": "12/02/2022",
-    "updated_at": "19/02/2022"
-}
+[
+    {
+        "name": "salut",
+        "description": "This is a desc",
+        "token": "687ZD89Z96DZ879",
+        "price": 44,
+        "stock": 10,
+        "created_at": "12/02/2022",
+        "updated_at": "19/02/2022"
+    },
+    {
+        "name": "brose à cheveux",
+        "description": "Super outils pour avoir une belle coupe",
+        "token": "9dab8c52-849d-48df-9399-476486bb10f3",
+        "price": "22",
+        "stock": "120",
+        "created_at": "31/03/2022, 11:18:12",
+        "updated_at": "31/03/2022, 11:18:12"
+    },
+    {
+        "name": "brose à cheveux3",
+        "description": "Super outils pour avoir une belle coupe",
+        "token": "9dab8c52-849d-48df-977Z399-476486bb10f3",
+        "price": "22",
+        "stock": "120",
+        "created_at": "31/03/2022, 11:18:12",
+        "updated_at": "31/03/2022, 11:18:12"
+    }
+]

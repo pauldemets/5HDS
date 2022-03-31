@@ -2,18 +2,18 @@ const UsersData = require("../data/users.json");
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 
-function getAll() {
+const getAll = () => {
     try {
         const jsonUsersData = fs.readFileSync("./data/users.json");
         const res = JSON.parse(jsonUsersData);
         return res;
     } catch (err) {
         console.log(err);
-        return { code: 500, message: "Error while reading file data." };
+        return { code: 500, message: "Error while getting all users data." };
     }
 }
 
-function addNew(req, res) {
+const addNew = (req, res) => {
     const newUser = {
         "firstname": req.body.firstname,
         "lastname": req.body.lastname,
@@ -77,7 +77,7 @@ const edit = (req) => {
     }
 }
 
-function deleteUser(req, res) {
+const deleteUser = (req, res) => {
     const result = UsersData.filter(
         function (user) { return user.token != req.params.token }
     );

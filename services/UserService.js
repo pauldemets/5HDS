@@ -4,13 +4,16 @@ const { v4: uuidv4 } = require('uuid');
 
 const getAll = () => {
     try {
-        const jsonUsersData = fs.readFileSync("./data/users.json");
-        const res = JSON.parse(jsonUsersData);
-        return res;
+        return getAllUsersFromFile();
     } catch (err) {
         console.log(err);
         return { code: 500, message: "Error while getting all users data." };
     }
+}
+
+const getAllUsersFromFile = () => {
+    const jsonUsersData = fs.readFileSync("./data/users.json");
+    return JSON.parse(jsonUsersData);
 }
 
 const addNew = (req, res) => {
@@ -23,7 +26,7 @@ const addNew = (req, res) => {
         "updated_at": new Date().toLocaleString()
     };
 
-    var tempNewUsersList = UsersData;
+    var tempNewUsersList = getAllUsersFromFile();
 
     tempNewUsersList ?
         tempNewUsersList.push(newUser) :
@@ -47,7 +50,7 @@ const addNew = (req, res) => {
 }
 
 const edit = (req) => {
-    const result = UsersData.map(user => {
+    const result = getAllUsersFromFile().map(user => {
         if (user.token === req.params.token) {
             return {
                 ...user,
@@ -78,7 +81,7 @@ const edit = (req) => {
 }
 
 const deleteUser = (req, res) => {
-    const result = UsersData.filter(
+    const result = getAllUsersFromFile().filter(
         function (user) { return user.token != req.params.token }
     );
 
